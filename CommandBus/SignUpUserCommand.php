@@ -4,6 +4,9 @@ namespace Spraed\CommandUserBundle\CommandBus;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @author Stefan Blanke <stedekay@posteo.de>
+ */
 class SignUpUserCommand
 {
     /**
@@ -15,25 +18,17 @@ class SignUpUserCommand
     /**
      * @var string
      * @Assert\NotBlank
-     */
-    public $fullName;
-
-    /**
-     * @var string
-     * @Assert\NotBlank
      * @Assert\Email
      */
     public $email;
 
     /**
      * @param string $username
-     * @param string $fullName
      * @param string $email
      */
-    public function __construct($username, $fullName, $email)
+    public function __construct($username, $email)
     {
         $this->username = $username;
-        $this->fullName = $fullName;
         $this->email = $email;
     }
 }

@@ -2,6 +2,16 @@
 
 namespace Spraed\CommandUserBundle\CommandBus;
 
+use SimpleBus\Message\Recorder\RecordsMessages;
+use Spraed\CommandUserBundle\Entity\User;
+use Spraed\CommandUserBundle\EventBus\UserSignedUpEvent;
+use Spraed\CommandUserBundle\Repository\UserRepository;
+use Spraed\CommandUserBundle\Service\PasswordService;
+use Symfony\Component\Security\Core\Encoder\EncoderFactory;
+
+/**
+ * @author Stefan Blanke <stedekay@posteo.de>
+ */
 class SignUpUserCommandHandler
 {
     /**
@@ -25,9 +35,9 @@ class SignUpUserCommandHandler
     private $eventRecorder;
 
     /**
-     * @param UserRepository $userRepository
+     * @param UserRepository  $userRepository
      * @param PasswordService $passwordService
-     * @param EncoderFactory $encoderFactory
+     * @param EncoderFactory  $encoderFactory
      * @param RecordsMessages $eventRecorder
      */
     public function __construct(UserRepository $userRepository, PasswordService $passwordService, EncoderFactory $encoderFactory, RecordsMessages $eventRecorder)
@@ -43,7 +53,7 @@ class SignUpUserCommandHandler
      */
     public function handle(SignUpUserCommand $command)
     {
-        $user = new User($command->username, $command->fullName, $command->email);
+        $user = new User($command->username, $command->email);
 
         $password = $this->passwordService->generatePassword();
         $encoder = $this->encoderFactory->getEncoder($user);
@@ -53,7 +63,7 @@ class SignUpUserCommandHandler
         $this->userRepository->addUser($user);
 
         // send mail to new user
-        $event = new UserSignedUpEvent($command->username, $command->fullName, $command->email, $password);
+        $event = new UserSignedUpEvent($command->username, $command->email, $password);
         $this->eventRecorder->record($event);
     }
 }

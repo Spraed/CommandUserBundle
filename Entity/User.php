@@ -2,19 +2,20 @@
 
 namespace Spraed\CommandUserBundle\Entity;
 
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+
 /**
  * @author Stefan Blanke <stedekay@posteo.de>
  *
  * @ORM\Table(name="user", indexes={@ORM\Index(name="username_idx", columns={"username"})}))
  * @ORM\Entity(repositoryClass="Spraed\CommandUserBundle\Repository\DoctrineUserRepository")
  */
-class User
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="guid")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="GUID")
      */
     private $id;
 
@@ -23,12 +24,6 @@ class User
      * @ORM\Column(type="string", length=25, unique=true)
      */
     private $username;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $fullName;
 
     /**
      * @var string
@@ -62,13 +57,11 @@ class User
 
     /**
      * @param string $username
-     * @param string $fullName
      * @param string $email
      */
-    public function __construct($username, $fullName, $email)
+    public function __construct($username, $email)
     {
         $this->username = $username;
-        $this->fullName = $fullName;
         $this->email = $email;
         $this->enabled = true;
         $this->locked = false;
@@ -86,12 +79,10 @@ class User
     }
 
     /**
-     * @param string $fullName
      * @param string $email
      */
-    public function updateProfile($fullName, $email)
+    public function updateProfile($email)
     {
-        $this->fullName = $fullName;
         $this->email = $email;
     }
 
@@ -143,14 +134,6 @@ class User
     public function getUsername()
     {
         return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->fullName;
     }
 
     /**
@@ -215,7 +198,7 @@ class User
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        // no plain password stored
     }
 
     /**
