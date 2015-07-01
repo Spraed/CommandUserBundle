@@ -79,10 +79,12 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * @param string $username
      * @param string $email
      */
-    public function updateProfile($email)
+    public function updateProfile($username, $email)
     {
+        $this->username = $username;
         $this->email = $email;
     }
 
