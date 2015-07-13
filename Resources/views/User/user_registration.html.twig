@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">{{ 'user.create'|trans }}</h1>
+    <div>
+        {{ form_start(form) }}
+
+        {{ form_row(form.username, {'label': 'user.username'}) }}
+        {{ form_row(form.fullName, {'label': 'user.name'}) }}
+        {{ form_row(form.email, {'label': 'user.email'}) }}
+
+        {{ form_widget(form.save) }}
+
+
+        <a href="{{ path('get_users') }}">{{ form_widget(form.cancel) }}</a>
+
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

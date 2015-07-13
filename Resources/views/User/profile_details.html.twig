@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">{{ user.fullName }}
+        <small>{{ user.username }}</small>
+    </h1>
+
+    <div>{{ user.email }}</div>
+{% endblock %}
+
+{% block sidebar %}
+    <ul class="nav nav-sidebar">
+        <li {% if app.request.attributes.get( '_route' ) == 'edit_profile' %} class="active" {% endif %}><a
+                    href="{{ path('spraed_profile_edit') }}"><i class="fa fa-pencil"></i> {{ 'profile.edit'|trans }}</a></li>
+        <li {% if app.request.attributes.get( '_route' ) == 'edit_password' %} class="active" {% endif %}><a
+                    href="{{ path('spraed_profile_edit_password') }}"><i class="fa fa-lock"></i> {{ 'profile.change_password'|trans }}
+            </a></li>
+    </ul>
+{% endblock %}

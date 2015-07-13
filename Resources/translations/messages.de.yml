@@ -1,0 +1,87 @@
+common:
+    create: "Erstellen"
+    edit: "Bearbeiten"
+    save: "Speichern"
+    cancel: "Abbrechen"
+    delete: "Löschen"
+    yes: "Ja"
+    no: "Nein"
+    info: "Informationen"
+
+login:
+    title: "Spraed CMS"
+    headline: "Spraed CMS - Anmeldung"
+    username: "Benutzername oder E-Mail-Adresse"
+    password: "Passwort"
+    submit: "Anmelden"
+
+navigation:
+    brand: "Spraed Dashboard"
+    department: "Abteilung"
+    department_administration: "Abteilungen verwalten"
+    user_administration: "Benutzerverwaltung"
+    profile: "Profil"
+    logout: "Abmelden"
+
+user:
+    name: "Name"
+    username: "Benutzername"
+    email: "E-Mail"
+    password: "Passwort"
+    reset_password: "Passwort zurücksetzen"
+    old_password: "Altes Passwort"
+    new_password: "Neues Passwort"
+    repeat_password: "Passwortwiederholung"
+    administration: "Benutzer-Verwaltung"
+    enable: "Benutzer aktivieren"
+    enabled: "Aktiv"
+    disable: "Benutzer deaktivieren"
+    disabled: "Deaktiviert"
+    create: "Benutzer anlegen"
+    edit: "Benutzer bearbeiten"
+    roles: "Rollen zuweisen"
+
+    mail:
+        signup:
+            subject: "Willkommen bei Spraed CMS"
+        reset:
+            subject: "Ihr Passwort wurde zurückgesetzt"
+
+    error:
+        old_password: "Das alte Passwort stimmt nicht mit dem aktuellen überein."
+        repeat_password: "Das neue Passwort und die Wiederholung stimmen nicht überein."
+        same_password: "Das neue Passwort darf nicht dem alten entsprechen."
+
+    flash:
+        signup_success: "Benutzer erfolgreich angelegt."
+        password_updated: "Passwort erfolgreich geändert."
+        reset_password: "Das Passwort wurde zurückgesetzt."
+
+department:
+    name: "Name"
+    slug: "URL"
+    active: "Aktiv"
+    inactive: "Inaktiv"
+    administration: "Abteilungs-Verwaltung"
+    create: "Abteilung anlegen"
+    rename: "Abteilung umbenennen"
+    activate: "Abteilung aktivieren"
+    deactivate: "Abteilung deaktivieren"
+
+    flash:
+        add: "Abteilung erfolgreich angelegt."
+
+category:
+    sidebar: "Kategorien"
+    administration: "Kategorie-Verwaltung"
+    name: "Name"
+    slug: "URL"
+    create: "Kategorie erstellen"
+
+    flash:
+        add: "Kategorie erfolgreich gespeichert"
+
+
+profile:
+    edit: "Profil bearbeiten"
+    change_password: "Passwort ändern"

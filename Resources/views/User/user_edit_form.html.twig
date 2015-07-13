@@ -1,0 +1,16 @@
+<div>
+    {{ form_start(form) }}
+
+    {{ form_row(form.username, {'label': 'user.username'}) }}
+    {{ form_row(form.fullName, {'label': 'user.name'}) }}
+    {{ form_row(form.email, {'label': 'user.email'}) }}
+
+    {{ form_widget(form.save) }}
+
+    {% block cancel_button %}
+        <a href="{{ path('get_user', {'username': user.username}) }}">{{ form_widget(form.cancel) }}</a>
+    {% endblock %}
+
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>
