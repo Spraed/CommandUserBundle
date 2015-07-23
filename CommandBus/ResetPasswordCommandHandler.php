@@ -3,21 +3,15 @@
 namespace Spraed\CommandUserBundle\CommandBus;
 
 use SimpleBus\Message\Recorder\RecordsMessages;
-use Spraed\CommandUserBundle\Entity\User;
-use Spraed\CommandUserBundle\EventBus\UserSignedUpEvent;
-use Spraed\CommandUserBundle\Repository\UserRepository;
+use Spraed\CommandUserBundle\EventBus\PasswordResettedEvent;
 use Spraed\CommandUserBundle\Service\PasswordService;
 use Symfony\Component\Security\Core\Encoder\EncoderFactory;
 
 /**
  * @author Stefan Blanke <stedekay@posteo.de>
  */
-class SignUpUserCommandHandler
+class ResetPasswordCommandHandler
 {
-    /**
-     * @var UserRepository
-     */
-    private $userRepository;
 
     /**
      * @var PasswordService
@@ -35,35 +29,34 @@ class SignUpUserCommandHandler
     private $eventRecorder;
 
     /**
-     * @param UserRepository  $userRepository
      * @param PasswordService $passwordService
      * @param EncoderFactory  $encoderFactory
      * @param RecordsMessages $eventRecorder
      */
-    public function __construct(UserRepository $userRepository, PasswordService $passwordService, EncoderFactory $encoderFactory, RecordsMessages $eventRecorder)
+    public function __construct(PasswordService $passwordService, EncoderFactory $encoderFactory, RecordsMessages $eventRecorder)
     {
-        $this->userRepository = $userRepository;
-        $this->passwordService = $passwordService;
-        $this->encoderFactory = $encoderFactory;
         $this->eventRecorder = $eventRecorder;
+        $this->encoderFactory = $encoderFactory;
+        $this->passwordService = $passwordService;
     }
 
+
     /**
-     * @param SignUpUserCommand $command
+     * @param ResetPasswordCommand $message
      */
-    public function handle(SignUpUserCommand $command)
+    public function handle(ResetPasswordCommand $message)
     {
-        $user = new User($command->username, $command->email);
+        $user = $message->user;
 
         $password = $this->passwordService->generatePassword();
         $encoder = $this->encoderFactory->getEncoder($user);
         $encryptedPassword = $encoder->encodePassword($password, $user->getSalt());
 
         $user->updatePassword($encryptedPassword);
-        $this->userRepository->addUser($user);
 
-        // send mail to new user
-        $event = new UserSignedUpEvent($command->username, $command->email, $password);
+        // send mail to user
+        $event = new PasswordResettedEvent($message->user, $password);
         $this->eventRecorder->record($event);
     }
-}
+
+} 

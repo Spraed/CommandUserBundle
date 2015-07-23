@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">{{ 'user.administration'|trans }}</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ 'user.name'|trans }}</th>
+                <th>{{ 'user.username'|trans }}</th>
+                <th>{{ 'user.email'|trans }}</th>
+                <th>{{ 'user.enabled'|trans }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr class="{{ user.isEnabled ? 'active' : 'inactive' }}">
+                    <td>{{ loop.index }}</td>
+                    <td>{{ user.fullName }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.isEnabled ? ('common.yes'|trans) : ('common.no'|trans) }}</td>
+                    <td class="buttons">
+                        <a class="btn btn-primary" href="{{ path('get_user', {'username': user.username}) }}"
+                           title="{{ 'common.edit'|trans }}">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('register_user') }}"><i class="fa fa-plus"></i> {{ 'user.create'|trans }}</a></li>
+    </ul>
+{% endblock %}

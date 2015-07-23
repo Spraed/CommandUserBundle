@@ -1,0 +1,9 @@
+{% extends 'user/user_details.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">{{ user.fullName }}
+        <small>{{ user.username }}</small>
+    </h1>
+
+    {% include 'user/user_edit_form.html.twig' %}
+{% endblock %}

@@ -1,0 +1,3 @@
+spraed_user:
+    type: annotation
+    resource: @Spraed/CommandUserBundle/Controller

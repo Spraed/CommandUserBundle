@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">{{ user.fullName }}
+        <small>{{ user.username }} {% if not user.isEnabled %}({{ 'user.disabled'|trans }}){% endif %}</small>
+    </h1>
+
+    <div>{{ user.email }}</div>
+{% endblock %}
+
+{% block sidebar %}
+    <ul class="nav nav-sidebar">
+        <li {% if app.request.attributes.get( '_route' ) == 'edit_user' %} class="active" {% endif %}><a
+                    href="{{ path("edit_user", {'username': user.username}) }}"><i
+                        class="fa fa-pencil"></i> {{ 'user.edit'|trans }}</a></li>
+        <li><a href="{{ path('reset_password', {'username': user.username}) }}" id="reset-password"><i
+                        class="fa fa-lock"></i> {{ 'user.reset_password'|trans }}</a></li>
+        <li><a href="#"><i class="fa fa-toggle-on"></i> {{ 'user.roles'|trans }}</a></li>
+        {% if user.isEnabled %}
+            <li><a href="{{ path("disable_user", {'username': user.username}) }}"><i
+                            class="fa fa-times-circle"></i> {{ 'user.disable'|trans }}</a></li>
+        {% else %}
+            <li><a href="{{ path("enable_user", {'username': user.username}) }}"><i
+                            class="fa fa-check-circle"></i> {{ 'user.enable'|trans }}</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}
