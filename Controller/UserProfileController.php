@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @author stedekay <stedekay@posteo.de>
  *
- * @Prefix("/profile")
+ * @Route("profile")
  */
 class UserProfileController extends Controller
 {
