@@ -3,8 +3,8 @@ services:
     alias: spraed.user.repository.doctrine
 
   spraed.user.repository.doctrine:
-    class: Spraed\CommandUserBundle\Repository\User\DoctrineUserRepository
+    class: Spraed\CommandUserBundle\Repository\DoctrineUserRepository
     factory_service: doctrine.orm.entity_manager
     factory_method: getRepository
-    arguments: [Spraed\CommandUserBundle:User\User]
+    arguments: [Spraed\CommandUserBundle:User]
     public: false
