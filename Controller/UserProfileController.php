@@ -1,6 +1,6 @@
 <?php
 
-namespace Spraed\CommandUserBundle\Controller\User;
+namespace Spraed\CommandUserBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
