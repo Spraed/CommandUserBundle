@@ -1,12 +1,12 @@
 services:
-    spraed.user.event.send_mail:
-        class: Spraed\CommandUserBundle\EventBus\SendMailWhenUserSignedUp
-        arguments: ["@mailer", "@templating"]
-        tags:
-            - { name: event_subscriber, subscribes_to: Spraed\CommandUserBundle\EventBus\UserSignedUpEvent }
+  spraed.user.event.send_mail:
+    class: Spraed\CommandUserBundle\EventBus\SendMailWhenUserSignedUp
+    arguments: ["@mailer", "@templating"]
+    tags:
+      - { name: event_subscriber, subscribes_to: Spraed\CommandUserBundle\EventBus\UserSignedUpEvent }
 
-    spraed.user.event.reset_password:
-        class: Spraed\CommandUserBundle\EventBus\SendMailWhenPasswordResetted
-        arguments: ["@mailer", "@templating"]
-        tags:
-            - { name: event_subscriber, subscribes_to: Spraed\CommandUserBundle\EventBus\PasswordResettedEvent }
+  spraed.user.event.reset_password:
+    class: Spraed\CommandUserBundle\EventBus\SendMailWhenPasswordResetted
+    arguments: ["@mailer", "@templating"]
+    tags:
+      - { name: event_subscriber, subscribes_to: Spraed\CommandUserBundle\EventBus\PasswordResettedEvent }

@@ -1,3 +1,3 @@
 services:
-    spraed.user.password_service:
-        class: Spraed\CommandUserBundle\Service\PasswordService
+  spraed.user.password_service:
+    class: Spraed\CommandUserBundle\Service\PasswordService

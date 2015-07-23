@@ -1,44 +1,44 @@
 services:
-    spraed.user.handler.sign_up:
-        class: Spraed\CommandUserBundle\CommandBus\SignUpUserCommandHandler
-        arguments: ["@spraed.user.user_repository", "@spraed.user.password_service", "@security.encoder_factory", "@event_recorder"]
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\SignUpUserCommand }
+  spraed.user.handler.sign_up:
+    class: Spraed\CommandUserBundle\CommandBus\SignUpUserCommandHandler
+    arguments: ["@spraed.user.user_repository", "@spraed.user.password_service", "@security.encoder_factory", "@event_recorder"]
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\SignUpUserCommand }
 
-    user.handler.add_role:
-        class: Spraed\CommandUserBundle\CommandBus\AddRoleCommandHandler
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\AddRoleCommand }
+  user.handler.add_role:
+    class: Spraed\CommandUserBundle\CommandBus\AddRoleCommandHandler
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\AddRoleCommand }
 
-    user.handler.remove_role:
-        class: Spraed\CommandUserBundle\CommandBus\RemoveRoleCommandHandler
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\RemoveRoleCommand }
+  user.handler.remove_role:
+    class: Spraed\CommandUserBundle\CommandBus\RemoveRoleCommandHandler
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\RemoveRoleCommand }
 
-    user.handler.reset_password:
-        class: Spraed\CommandUserBundle\CommandBus\ResetPasswordCommandHandler
-        arguments: ["@spraed.user.password_service", "@security.encoder_factory", "@event_recorder"]
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\ResetPasswordCommand }
+  user.handler.reset_password:
+    class: Spraed\CommandUserBundle\CommandBus\ResetPasswordCommandHandler
+    arguments: ["@spraed.user.password_service", "@security.encoder_factory", "@event_recorder"]
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\ResetPasswordCommand }
 
-    user.handler.enable_user:
-        class: Spraed\CommandUserBundle\CommandBus\EnableUserCommandHandler
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\EnableUserCommand }
+  user.handler.enable_user:
+    class: Spraed\CommandUserBundle\CommandBus\EnableUserCommandHandler
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\EnableUserCommand }
 
-    user.handler.disable_user:
-        class: Spraed\CommandUserBundle\CommandBus\DisableUserCommandHandler
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\DisableUserCommand }
+  user.handler.disable_user:
+    class: Spraed\CommandUserBundle\CommandBus\DisableUserCommandHandler
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\DisableUserCommand }
 
-    user.handler.update_profile:
-        class: Spraed\CommandUserBundle\CommandBus\UpdateUserProfileCommandHandler
-        arguments: ["@security.encoder_factory"]
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\UpdateUserProfileCommand }
+  user.handler.update_profile:
+    class: Spraed\CommandUserBundle\CommandBus\UpdateUserProfileCommandHandler
+    arguments: ["@security.encoder_factory"]
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\UpdateUserProfileCommand }
 
-    user.handler.update_password:
-        class: Spraed\CommandUserBundle\CommandBus\UpdatePasswordCommandHandler
-        arguments: ["@security.encoder_factory"]
-        tags:
-            - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\UpdatePasswordCommand }
+  user.handler.update_password:
+    class: Spraed\CommandUserBundle\CommandBus\UpdatePasswordCommandHandler
+    arguments: ["@security.encoder_factory"]
+    tags:
+      - { name: command_handler, handles: Spraed\CommandUserBundle\CommandBus\UpdatePasswordCommand }
