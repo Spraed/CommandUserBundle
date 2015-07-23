@@ -253,7 +253,7 @@ class UserAdministrationController extends Controller
     /**
      * @param User $user
      *
-     * @Get("/{username}/disable", name="spraed_user_disable")
+     * @Route("/{username}/disable", name="spraed_user_disable")
      * @Method("PUT")
      *
      * @return Response
