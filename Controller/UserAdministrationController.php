@@ -27,13 +27,6 @@ class UserAdministrationController extends Controller
 {
 
     /**
-     * @var UserRepository
-     *
-     * @DI\Inject("spraed.user.repository")
-     */
-    private $userRepository;
-
-    /**
      * @Route("", name="spraed_user_list")
      * @Template("user/user_list.html.twig")
      * @Method("GET")
@@ -42,7 +35,7 @@ class UserAdministrationController extends Controller
      */
     public function getUsersAction()
     {
-        $users = $this->userRepository->findAllUsers();
+        $users = $this->get('spraed.user.repository')->findAllUsers();
 
         return [
             'users' => $users,
